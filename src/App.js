@@ -12,11 +12,11 @@ function App() {
   })
   const [details, setDetails] = useState(false)
   const [isSubmitted, setIssubmitted] = useState(false)
+  const [error, setError] = useState("");
 
   const handleChange = (e)=>{
-    const {name, value} = e.target
     setForm(prev => ({
-      ...prev, [name]: value
+      ...prev, [e.target.name]: e.target.value
     }))
   }
   const handleSubmit =(e) =>{
@@ -26,6 +26,7 @@ function App() {
       setIssubmitted(true)
     }else{
       setDetails(false)
+      setError("Invalid username or password. Please try again.");
     }
   }
 
@@ -38,10 +39,11 @@ function App() {
         </div>
       ):( <form onSubmit={handleSubmit}>
         <div>
-          Username: <input type='text' name='username' value={form.username} onChange={handleChange} required></input>
+          Username: <input type='text' label="Username" name='username' value={form.username} onChange={handleChange} required></input>
         </div>
-        <div>Password: <input type='password' name='password' value={form.password} onChange={handleChange} required></input></div>
+        <div>Password: <input type='password' label="Password" name='password' value={form.password} onChange={handleChange} required></input></div>
         <div><button type='submit'>Submit</button></div>
+        {error && <div style={{ color: 'red' }}>{error}</div>}
       </form>)} 
     </div>
   );
