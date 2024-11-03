@@ -39,9 +39,9 @@ function App() {
         </div>
       ):( <form onSubmit={handleSubmit}>
         <div>
-          Username: <input type='text' label="Username" name='username' value={form.username} onChange={handleChange} required></input>
+          Username: <input type='text' label="username" name='username' value={form.username} onChange={handleChange} required></input>
         </div>
-        <div>Password: <input type='password' label="Password" name='password' value={form.password} onChange={handleChange} required></input></div>
+        <div>Password: <input type='password' label="password" name='password' value={form.password} onChange={handleChange} required></input></div>
         <div><button type='submit'>Submit</button></div>
         {error && <div style={{ color: 'red' }}>{error}</div>}
       </form>)} 
